@@ -10,7 +10,9 @@ build-native-platform:
 build-all-platforms:
 	docker buildx build --progress plain \
 	--tag localhost/apache-centos-7:latest \
-	--platform linux/amd64,linux/arm/v7,linux/arm64 .
+	--platform linux/amd64,linux/arm64 .
+	# TODO: make linux/arm/v7 architecture available when possible
+	# --platform linux/amd64,linux/arm/v7,linux/arm64 .
 
 .PHONY: test
 test:

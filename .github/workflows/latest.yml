@@ -26,7 +26,9 @@ jobs:
             --tag docker.io/raasss/apache-centos-7:latest \
             --tag quay.io/raasss/apache-centos-7:${GITHUB_REF_NAME} \
             --tag quay.io/raasss/apache-centos-7:latest \
-            --platform linux/amd64,linux/arm/v7,linux/arm64 .
+            --platform linux/amd64,linux/arm64 .
+            # TODO: make linux/arm/v7 architecture available when possible
+            # --platform linux/amd64,linux/arm/v7,linux/arm64 .
       - name: Configure login to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin docker.io
       - name: Configure login to Quay.io
@@ -38,7 +40,9 @@ jobs:
             --tag docker.io/raasss/apache-centos-7:latest \
             --tag quay.io/raasss/apache-centos-7:${GITHUB_REF_NAME} \
             --tag quay.io/raasss/apache-centos-7:latest \
-            --platform linux/amd64,linux/arm/v7,linux/arm64 .
+            --platform linux/amd64,linux/arm64 .
+            # TODO: make linux/arm/v7 architecture available when possible
+            # --platform linux/amd64,linux/arm/v7,linux/arm64 .
       - name: Send slack notification for success
         if: success()
         env:
